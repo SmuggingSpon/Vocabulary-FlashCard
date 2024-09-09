@@ -78,8 +78,6 @@ fetch("../../Data/currentDeck.txt").then(
                 for(let i = 1; i <= numberOfQuestions; i++){
                     questions.push(meanings[i]);
                     answers[Math.floor(Math.random() * 4)].push(words[i]);
-                    console.log(words[i]);
-                    console.log(meanings[i]);
                     for(let j = 1; j < fakeWords.length; j++){
                         let index = Math.floor(Math.random() * (words.length - 1)) + 1;
                         [fakeWords[i], fakeWords[index]] = [fakeWords[index], fakeWords[i]];
@@ -141,7 +139,6 @@ function checkAnswer(id){
         document.getElementById("word-" + correctIndex.toString()).style.boxShadow = "3px 3px 3px lightgreen";
         for(let i = 1; i < 5; i++){
             if(i != correctIndex){
-                console.log(i);
                 document.getElementById("word-" + i.toString()).style.boxShadow = "3px 3px 3px #f47575";
             }
         }
