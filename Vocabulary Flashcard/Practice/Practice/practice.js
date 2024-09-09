@@ -11,6 +11,7 @@ function setUpQuestion(){
     document.getElementById("word-2").style.boxShadow = "";
     document.getElementById("word-3").style.boxShadow = "";
     document.getElementById("word-4").style.boxShadow = "";
+    document.getElementById("question-count").innerHTML = currentQuestion.toString() + "/" + countAllQuestions.toString();
 }
 fetch("../../Data/currentDeck.txt").then(
     response => response.text()
@@ -64,7 +65,11 @@ fetch("../../Data/currentDeck.txt").then(
                         meanings.push(meanings[i]);
                     }
                 }
-                let fakeWords = words;
+                let fakeWords = [""], fakeMeanings = [""];
+                for(let i = 1; i < words.length; i++){
+                    fakeWords.push(words[i]);
+                    fakeMeanings.push(meanings[i]);
+                }
                 for(let i = 1; i < words.length; i++){
                     let index = Math.floor(Math.random() * (words.length - 1)) + 1;
                     [words[i], words[index]] = [words[index], words[i]];
@@ -73,17 +78,34 @@ fetch("../../Data/currentDeck.txt").then(
                 for(let i = 1; i <= numberOfQuestions; i++){
                     questions.push(meanings[i]);
                     answers[Math.floor(Math.random() * 4)].push(words[i]);
+                    console.log(words[i]);
+                    console.log(meanings[i]);
                     for(let j = 1; j < fakeWords.length; j++){
                         let index = Math.floor(Math.random() * (words.length - 1)) + 1;
                         [fakeWords[i], fakeWords[index]] = [fakeWords[index], fakeWords[i]];
+                        [fakeMeanings[i], fakeMeanings[index]] = [fakeMeanings[index], fakeMeanings[i]];
                     }
                     for(let j = 0, index = 1; j < 4; j++, index++){
                         if(answers[j].length == i + 1){
                             correctAnswerIndex.push(j + 1);
                             continue;
                         }
-                        if(fakeWords[index] == words[i]){
-                            index++;
+                        while(true){
+                            if(fakeWords[index] == words[i] || fakeMeanings[index] == meanings[i]){
+                                index++;
+                                continue;
+                            }
+                            let needAdd = false;
+                            for(let k = j - 1; k > -1; k--){
+                                if(answers[k][answers[k].length - 1] == fakeWords[index]){
+                                    needAdd = true;
+                                    index++;
+                                    break;
+                                }
+                            }
+                            if(!needAdd){
+                                break;
+                            }
                         }
                         answers[j].push(fakeWords[index]);
                     }
@@ -100,6 +122,10 @@ function nextQuestion(){
         document.getElementById("meaning-ask-1").innerHTML = "Correct: " + countCorrect.toString();
         let countIncorrect = countAllQuestions - countCorrect;
         document.getElementById("meaning-ask-2").innerHTML = "Incorrect: " + countIncorrect.toString();
+        currentQuestion = -1;
+    }
+    else if(currentQuestion == -1){
+        location.reload();
     }
     else{
         haveAnswered = false;
