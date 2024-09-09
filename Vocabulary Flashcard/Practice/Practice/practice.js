@@ -70,18 +70,22 @@ fetch("../../Data/currentDeck.txt").then(
                     fakeWords.push(words[i]);
                     fakeMeanings.push(meanings[i]);
                 }
-                for(let i = 1; i < words.length; i++){
-                    let index = Math.floor(Math.random() * (words.length - 1)) + 1;
-                    [words[i], words[index]] = [words[index], words[i]];
-                    [meanings[i], meanings[index]] = [meanings[index], meanings[i]];
+                for(let _ = 0; _ < 10; _++){
+                    for(let i = 1; i < words.length; i++){
+                        let index = Math.floor(Math.random() * (words.length - 1)) + 1;
+                        [words[i], words[index]] = [words[index], words[i]];
+                        [meanings[i], meanings[index]] = [meanings[index], meanings[i]];
+                    }
                 }
                 for(let i = 1; i <= numberOfQuestions; i++){
                     questions.push(meanings[i]);
                     answers[Math.floor(Math.random() * 4)].push(words[i]);
-                    for(let j = 1; j < fakeWords.length; j++){
-                        let index = Math.floor(Math.random() * (words.length - 1)) + 1;
-                        [fakeWords[i], fakeWords[index]] = [fakeWords[index], fakeWords[i]];
-                        [fakeMeanings[i], fakeMeanings[index]] = [fakeMeanings[index], fakeMeanings[i]];
+                    for(let _ = 0; _ < 10; _++){
+                        for(let j = 1; j < fakeWords.length; j++){
+                            let index = Math.floor(Math.random() * (words.length - 1)) + 1;
+                            [fakeWords[i], fakeWords[index]] = [fakeWords[index], fakeWords[i]];
+                            [fakeMeanings[i], fakeMeanings[index]] = [fakeMeanings[index], fakeMeanings[i]];
+                        }
                     }
                     for(let j = 0, index = 1; j < 4; j++, index++){
                         if(answers[j].length == i + 1){
