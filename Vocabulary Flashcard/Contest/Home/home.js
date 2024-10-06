@@ -137,7 +137,7 @@ function sendDataToContest(){
     let numberOfQuestions = parseInt(document.getElementById("number-of-questions").value);
     let sendData = "";
     for(let i = 0; i < numberOfQuestions; i++){
-        for(let _ = 0; _ < 5; _++){
+        for(let _ = 0; _ < 10; _++){
             for(let j = 0; j < allIndex.length; j++){
                 let index = Math.floor(Math.random() * currentWords.length);
                 [allIndex[i], allIndex[index]] = [allIndex[index], allIndex[i]];
