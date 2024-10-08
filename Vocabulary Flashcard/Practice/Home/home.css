@@ -1,0 +1,25 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: powderblue !important;
+}
+html, body{
+    width: 100%;
+    height: 100%;
+}
+div.container{
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20%;
+}
+#number-of-questions{
+    width: 300px;
+    margin-bottom: 30px;
+}
+div.container > a{
+    margin-left: 100px;
+}
