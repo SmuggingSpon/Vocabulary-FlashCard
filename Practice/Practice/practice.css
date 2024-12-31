@@ -1,0 +1,88 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: powderblue !important;
+}
+html, body{
+    width: 100%;
+    height: 100%;
+}
+#question-container{
+    margin-top: 50px;
+    width: 70%;
+    height: 80%;
+    border-style: solid;
+    border-radius: 30px;
+    border-color: rgb(179, 179, 179);
+    border-width: 4px;
+    background-color: white;
+}
+#meaning-container{
+    margin-top: 10%;
+    height: 60px;
+}
+#meaning-ask-1, #meaning-ask-2{
+    font-size: 20px;
+}
+div.row > div.col-sm-4.word{
+    border-style: solid;
+    border-radius: 5%;
+    border-color: gray;
+    border-width: 3px;
+}
+#first-line, #second-line{
+    height: 30px;
+}
+#first-line{
+    margin-top: 15%;
+}
+#second-line{
+    margin-top: 8%;
+}
+#words-speech{
+    margin-top: 6%;
+}
+#words-speech > button.btn.btn-info.btn-lg{
+    margin-left: 20px;
+    margin-right: 20px;
+    font-weight: bold;
+}
+#words-speech > button.btn.btn-info.btn-lg:hover{
+    cursor: grab;
+    box-shadow: 3px 3px 3px rgba(142, 196, 195, 0.766);
+}
+div.word.text-center{
+    position: absolute;
+    display: inline-block;
+    width: 350px;
+    height: 60px;
+    border-style: solid;
+    border-color: black;
+    border-width: 3px;
+    background-color: white;
+}
+div.word.text-center:hover{
+    cursor: grab;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.766);
+}
+#word-1, #word-3{
+    left: 20%;
+}
+#word-2, #word-4{
+    right: 20%;
+}
+.word > p{
+    margin-top: 16px;
+}
+#button-container{
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+#button-container > button{
+    width: 150px;
+}
